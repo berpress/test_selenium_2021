@@ -1,13 +1,13 @@
-from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.common.keys import Keys
+from pages.main_page import MainPage
 
-driver = webdriver.Chrome(ChromeDriverManager().install())
-driver.get("http://www.python.org")
-assert "Python" in driver.title
-elem = driver.find_element_by_name("q")
-elem.clear()
-elem.send_keys("pycon")
-elem.send_keys(Keys.RETURN)
-assert "No results found." not in driver.page_source
-driver.quit()
+
+def test_1():
+    main_page = MainPage()
+    main_page.open_main_page()
+    assert "Python" in main_page.get_title()
+    main_page.search("pycon")
+    assert "No results found." not in main_page.get_page_source()
+    main_page.quit()
+
+
+test_1()
