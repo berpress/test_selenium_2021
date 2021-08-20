@@ -5,9 +5,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 
 class Application:
-    def __init__(self, driver=webdriver.Chrome(ChromeDriverManager().install())):
+    def __init__(self, driver, url):
         self.driver = driver
-        self.main_page = MainPage(driver)
+        self.main_page = MainPage(driver, url)
 
     def quit(self):
         self.driver.quit()

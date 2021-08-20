@@ -1,9 +1,5 @@
+from locators.main_page import MainPageLocators
 from pages.base_page import BasePage
-from selenium.webdriver.common.by import By
-
-
-class MainPageLocators:
-    SEARCH_INPUT = (By.NAME, "q")
 
 
 class MainPage(BasePage):

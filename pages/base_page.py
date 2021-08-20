@@ -4,11 +4,11 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.support.wait import WebDriverWait
 
-BASE_URL = "http://www.python.org"
 
 class BasePage:
-    def __init__(self, driver):
+    def __init__(self, driver, url):
         self.driver = driver
+        self.url = url
 
     def find_element(self, locator, wait_time=10):
         return WebDriverWait(self.driver, wait_time).until(
@@ -27,7 +27,7 @@ class BasePage:
         element.send_keys(Keys.RETURN)
 
     def open_main_page(self):
-        self.driver.get(BASE_URL)
+        self.driver.get(self.url)
 
 
     def get_title(self) -> str:
